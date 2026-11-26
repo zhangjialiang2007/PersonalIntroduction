@@ -423,6 +423,7 @@ button { cursor: pointer; }
 .contact .contact-label { margin-bottom: 10px; font-size: 11px; letter-spacing: .16em; color: var(--accent); }
 .contact a { color: var(--text); border-bottom: 1px dashed #3b546c; }
 .contact a:hover { color: var(--accent); border-color: var(--accent); }
+.contact .contact-welcome { margin: 14px 0 0; font-size: 13px; line-height: 1.9; color: #a9b7c6; }
 
 /* ============================ 页脚 ============================ */
 .footer {
