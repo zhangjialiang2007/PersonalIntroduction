@@ -124,5 +124,19 @@
     "duration": "00:37",
     "date": "",
     "links": []
+  },
+  {
+    "id": "point-cloud",
+    "title": "PointCloud",
+    "category": "点云处理",
+    "summary": "",
+    "description": "",
+    "tags": [],
+    "cover": "data/pointCloud.jpg",
+    "bvid": "",
+    "video": "data/pointCloud.mp4",
+    "duration": "",
+    "date": "",
+    "links": []
   }
 ]
