@@ -95,50 +95,36 @@ button { cursor: pointer; }
   color: transparent;
 }
 .hero h1 i { font-style: normal; color: var(--accent); font-weight: 300; }
-/* 个人简介：分条信息卡（左侧标签 + 右侧内容） */
+/* 个人简介：轻量列表（左侧标签 + 右侧内容），只留一根竖线做分组 */
 .lead-list {
-  max-width: 540px;
+  max-width: 440px;
   margin: 0;
+  padding-left: 18px;
   display: grid;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background:
-    radial-gradient(120% 150% at 100% 0%, #ff9a6214, transparent 58%),
-    linear-gradient(160deg, #141c27, #0e141d);
-  overflow: hidden;
+  gap: 11px;
+  border-left: 1px solid #ff9a6240;
 }
 .lead-list div {
   display: grid;
-  grid-template-columns: 92px minmax(0, 1fr);
+  grid-template-columns: 68px minmax(0, 1fr);
   align-items: baseline;
-  gap: 20px;
-  padding: 16px 22px;
+  gap: 14px;
 }
-.lead-list div + div { border-top: 1px solid #1d2635; }
 .lead-list dt {
-  display: flex; align-items: center; gap: 9px;
-  font-size: 12px;
-  letter-spacing: .12em;
-  color: var(--muted);
-}
-.lead-list dt::before {
-  content: "";
-  flex: none;
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: #7e8c9e;
 }
 .lead-list dd {
   margin: 0;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: .01em;
-  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  color: #c9d4e0;
 }
 @media (max-width: 640px) {
-  .lead-list div { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; padding: 14px 16px; }
-  .lead-list dd { font-size: 14px; }
+  .lead-list { padding-left: 14px; gap: 9px; }
+  .lead-list div { grid-template-columns: 64px minmax(0, 1fr); gap: 12px; }
+  .lead-list dd { font-size: 13.5px; }
 }
 .actions { display: flex; gap: 12px; margin: 32px 0 44px; }
 .btn { padding: 13px 20px; border-radius: 9px; font-size: 13px; font-weight: 700; }
@@ -151,37 +137,55 @@ button { cursor: pointer; }
 .stats strong { font-size: 23px; font-weight: 800; }
 .stats span { font-size: 12px; color: var(--muted); }
 
-/* CSS 装饰图：同心圆 + 旋转光锥 */
+/* CSS 装饰图：同心细线轨道 + 强调色核心，与全站线描风格一致 */
 .hero-art {
   position: relative;
   justify-self: end;
-  width: min(420px, 100%);
+  width: min(300px, 100%);
   aspect-ratio: 1;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background:
-    repeating-linear-gradient(to right, #ffffff09 0 1px, transparent 1px 42px),
-    repeating-linear-gradient(to bottom, #ffffff09 0 1px, transparent 1px 42px),
-    radial-gradient(circle at 50% 50%, #16233a, #0b1119 70%);
+  background: radial-gradient(circle at 50% 50%, #ff9a620d, transparent 66%);
 }
+/* 外圈细线 */
 .hero-art::before {
   content: "";
   position: absolute;
-  inset: -35%;
-  background: conic-gradient(from 0deg, transparent, #ff9a6226 20%, transparent 42%, #7aa2ff26 66%, transparent 88%);
-  animation: spin 26s linear infinite;
+  inset: 0;
+  border: 1px solid #ffffff14;
+  border-radius: 50%;
 }
-.art-ring {
-  position: absolute; inset: 20%;
-  border: 1px dashed #ffffff2e;
+/* 顺着外圈缓慢转动的一小段橙色弧线 */
+.hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-top-color: #ff9a62b8;
+  border-right-color: #ff9a6240;
+  border-radius: 50%;
+  animation: spin 22s linear infinite;
+}
+.art-orbit {
+  position: absolute; inset: 18%;
+  border: 1px dashed #ffffff17;
   border-radius: 50%;
 }
 .art-core {
-  position: absolute; inset: 34%;
+  position: absolute; inset: 36%;
   border-radius: 50%;
-  border: 1px solid #ff9a6266;
-  background: radial-gradient(circle at 35% 30%, #ff9a6233, transparent 70%);
+  border: 1px solid #ff9a6280;
+  background: radial-gradient(circle at 38% 32%, #ff9a6224, transparent 72%);
+  box-shadow: 0 0 42px -16px #ff9a6255, inset 0 0 26px -18px #ff9a62;
+}
+/* 核心处的小光点，呼应页头的圆点 */
+.art-core::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 6px; height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .hero-art::before { animation: none; } }
@@ -456,7 +460,7 @@ dialog::backdrop { background: #030710e0; backdrop-filter: blur(5px); }
 }
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); padding-top: 56px; }
-  .hero-art { justify-self: center; width: min(360px, 100%); }
+  .hero-art { justify-self: center; width: min(240px, 100%); }
   .about-layout { grid-template-columns: minmax(0, 1fr); }
   .share-grid { grid-template-columns: minmax(0, 1fr); }
 }
