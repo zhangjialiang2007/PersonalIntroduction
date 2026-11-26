@@ -1,0 +1,17 @@
+# 分析同事站点时下载的参考资料（_ref 内含嵌套 .git，提交会变成无法使用的子模块）
+_ref/
+_ref2/
+
+# 浏览器自动化产物
+.playwright-cli/
+
+# 临时截图
+chk*.png
+preview-*.png
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+node_modules/
+*.log

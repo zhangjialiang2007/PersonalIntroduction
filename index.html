@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0a0d13" />
+  <!-- 改这里：浏览器标签页标题与搜索引擎摘录 -->
+  <title>YOUR NAME · 个人作品集</title>
+  <meta name="description" content="个人作品集 —— 几何算法、BIM 与可视化。" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <!-- 顶部导航：改 brand 里文字即可换名字 -->
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <span class="mark">Y</span>
+      <span>YOUR NAME<em> · PORTFOLIO</em></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="#works">作品</a>
+      <a href="#about">关于</a>
+      <a class="nav-link" href="https://github.com/zhangjialiang2007" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- 首屏：标题、简介、统计数字，文案都直接改这里 -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow"><span class="dot"></span> BIM · GEOMETRY · VISUALIZATION</p>
+        <h1>把研究做成<br /><span>看得见的东西</span><i>_</i></h1>
+        <p class="lead">这里写两三句自我介绍：你在做什么方向、解决过什么问题、习惯用什么工具。</p>
+        <div class="actions">
+          <a class="btn primary" href="#works">浏览作品 ↗</a>
+          <a class="btn ghost" href="#about">了解更多 ↓</a>
+        </div>
+        <div class="stats">
+          <div><strong id="stat-works">—</strong><span>作品</span></div>
+          <div><strong id="stat-categories">—</strong><span>方向</span></div>
+          <div><strong id="stat-year">—</strong><span>更新至</span></div>
+        </div>
+      </div>
+      <!-- 纯 CSS 绘制的装饰图，不需要素材；不喜欢可整块删掉 -->
+      <div class="hero-art" aria-hidden="true">
+        <span class="art-ring"></span>
+        <span class="art-core"></span>
+      </div>
+    </section>
+
+    <!-- 作品区：列表由 data/works.json 驱动，不要手写卡片 -->
+    <section class="works section" id="works" aria-labelledby="works-heading">
+      <div class="section-top">
+        <div>
+          <p class="kicker">01 / SELECTED WORKS</p>
+          <h2 id="works-heading">作品集<span class="accent">.</span></h2>
+          <p class="section-desc">每个作品包含一段演示、技术要点与说明。</p>
+        </div>
+        <span class="results" id="results" aria-live="polite">加载中…</span>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" id="filters" role="group" aria-label="按分类筛选"></div>
+        <label class="sort-control">排序
+          <select id="sort-by" aria-label="作品排序">
+            <option value="default">默认顺序</option>
+            <option value="newest">日期 · 从新到旧</option>
+            <option value="oldest">日期 · 从旧到新</option>
+          </select>
+        </label>
+        <label class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" /><path d="m16 16 5 5" />
+          </svg>
+          <input id="search" type="search" placeholder="搜索标题 / 标签 / 关键词…" aria-label="搜索作品" />
+        </label>
+      </div>
+
+      <div class="grid" id="work-grid"></div>
+      <p class="empty" id="empty" hidden>没有符合条件的作品，换个关键词或分类试试。</p>
+    </section>
+
+    <!-- 关于区 -->
+    <section class="about section" id="about">
+      <p class="kicker">02 / ABOUT</p>
+      <div class="about-layout">
+        <h2>写代码<br /><span>也写清楚。</span></h2>
+        <div>
+          <p>用一段话说明你的背景与关注点。这里的内容偏长期介绍，作品细节放到 data/works.json 里。</p>
+          <p>联系方式建议直接写邮箱或主页链接，方便别人找到你。</p>
+          <div class="chips">
+            <span>BIM</span><span>COMPUTATIONAL GEOMETRY</span><span>VISUALIZATION</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> YOUR NAME</span>
+    <span>POWERED BY GITHUB PAGES</span>
+    <a href="#top">回到顶部 ↑</a>
+  </footer>
+
+  <!-- 详情弹窗：内容由 JS 填充 -->
+  <dialog id="detail" aria-labelledby="detail-title">
+    <div class="dialog-shell">
+      <button class="close" id="close-detail" type="button" aria-label="关闭详情">✕</button>
+      <div class="player" id="player"></div>
+      <div class="detail-body">
+        <p class="detail-category" id="detail-category"></p>
+        <h2 id="detail-title"></h2>
+        <p class="detail-desc" id="detail-desc"></p>
+        <div class="tags" id="detail-tags"></div>
+        <div class="links" id="detail-links"></div>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
