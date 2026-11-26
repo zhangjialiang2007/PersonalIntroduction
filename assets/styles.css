@@ -375,7 +375,7 @@ button { cursor: pointer; }
 .about-layout h2 { margin: 10px 0 0; font-size: clamp(38px, 5vw, 62px); line-height: 1.15; letter-spacing: -.055em; }
 .about-layout h2 span { color: var(--accent); }
 .about-layout p { margin-top: 0; font-size: 15px; line-height: 1.95; color: var(--muted); }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0; }
 .chips span {
   padding: 7px;
   border: 1px solid #33465a;
@@ -384,19 +384,6 @@ button { cursor: pointer; }
   font-size: 10px;
   letter-spacing: .06em;
 }
-
-/* 代表性工作：左侧标签 + 右侧一句说明 */
-.facts { display: grid; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
-.facts li {
-  display: flex; align-items: baseline; gap: 14px;
-  padding: 12px 14px;
-  border: 1px solid #26344a;
-  border-radius: 9px;
-  background: #111a26;
-  font-size: 12px;
-}
-.facts b { flex: none; width: 72px; color: var(--accent); font-size: 11px; letter-spacing: .08em; }
-.facts span { color: #a9b7c6; }
 
 /* 联系方式 */
 .contact { margin-top: 26px; padding-top: 20px; border-top: 1px solid #1e2938; }
