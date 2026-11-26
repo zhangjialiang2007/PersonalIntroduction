@@ -95,11 +95,51 @@ button { cursor: pointer; }
   color: transparent;
 }
 .hero h1 i { font-style: normal; color: var(--accent); font-weight: 300; }
-/* 个人简介：分条排版（标签 + 内容） */
-.lead-list { max-width: 540px; margin: 0; display: grid; gap: 12px; }
-.lead-list div { display: flex; align-items: baseline; gap: 16px; }
-.lead-list dt { flex: none; width: 72px; font-size: 12px; letter-spacing: .08em; color: var(--accent); }
-.lead-list dd { margin: 0; font-size: 15px; line-height: 1.7; color: var(--muted); }
+/* 个人简介：分条信息卡（左侧标签 + 右侧内容） */
+.lead-list {
+  max-width: 540px;
+  margin: 0;
+  display: grid;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(120% 150% at 100% 0%, #ff9a6214, transparent 58%),
+    linear-gradient(160deg, #141c27, #0e141d);
+  overflow: hidden;
+}
+.lead-list div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 22px;
+}
+.lead-list div + div { border-top: 1px solid #1d2635; }
+.lead-list dt {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--muted);
+}
+.lead-list dt::before {
+  content: "";
+  flex: none;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+.lead-list dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--text);
+}
+@media (max-width: 640px) {
+  .lead-list div { grid-template-columns: 76px minmax(0, 1fr); gap: 12px; padding: 14px 16px; }
+  .lead-list dd { font-size: 14px; }
+}
 .actions { display: flex; gap: 12px; margin: 32px 0 44px; }
 .btn { padding: 13px 20px; border-radius: 9px; font-size: 13px; font-weight: 700; }
 .btn.primary { background: var(--accent); color: #1a0c04; }
@@ -425,6 +465,8 @@ dialog::backdrop { background: #030710e0; backdrop-filter: blur(5px); }
   .topbar nav { gap: 14px; }
   .nav-link { display: none; }
   .brand { font-size: 11px; }
+  /* 窄屏隐藏品牌后缀，避免页头横向溢出 */
+  .brand em { display: none; }
   .hero { padding: 46px 20px 52px; }
   .actions { margin: 26px 0 34px; }
   .stats { gap: 26px; }
